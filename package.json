@@ -1,10 +1,11 @@
 {
   "name": "WebScraper",
   "version": "1.0.0",
-  "description": "",
+  "description": "This web site will allow you to scrape, save and comment on articles from the WebDev subreddit.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,6 @@
     "express-handlebars": "^4.0.4",
     "mongoose": "^5.9.20",
     "request": "^2.79.0"
-  }
+  },
+  "devDependencies": {}
 }
