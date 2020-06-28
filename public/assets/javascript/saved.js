@@ -74,9 +74,25 @@ $(document).ready(function () {
         var currentNote;
         if (!data.notes.length) {
             currentNote = [
-
-            ]
+                "<li class='list-group-item'>",
+                "No notes.",
+                "</li>"
+            ].join("");
+            notesToRender.push(currentNote);
         }
+        else {
+            for (var i = 0; i < data, notes.length; i++) {
+                currentNote = $([
+                    "li class='list-group-item note'>",
+                    data.notes[i].noteText,
+                    "<button class='btn btn-danger note-delete'>x</button>",
+                    "</li>"
+                ].join(""));
+                currentNote.children("button").data("_id", data.notes[i]._id);
+                notesToRender.push(currentNote);
+            }
+        }
+        $(".note-container").append(notesToRender);
     }
 
     function handleArticleDelete() {
@@ -115,6 +131,31 @@ function handleArticleNotes() {
             notes: data || []
         };
         $(".btn.save").data("article", noteData);
+        renderNotesList(noteData);
     });
 }
-})
+
+function handleNoteSave() {
+    var noteData;
+    var newNote = $(".bootbox-body textarea").val().trim();
+    if (newNote) {
+        noteData = {
+            _id: $(this).data("article")._id,
+            noteText: newNote
+        };
+        $.post("/api/notes", noteData).then(function () {
+            bootbox.hideAll();
+        })
+    }
+}
+
+function handleNoteDelete() {
+    var noteToDelete = $(this).data("_id");
+    $.ajax({
+        url: "/api/notes/" + noteToDelete,
+        method: "DELETE"
+    }).then(function () {
+        bootbox.hideAll();
+    });
+}
+});

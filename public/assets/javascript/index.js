@@ -29,7 +29,7 @@ function renderArticles(articles) {
 function createPanel(article) {
     var panel =
         $([
-        < "div class='panel panel-default'>",
+            "<div class='panel panel-default'>",
             "<div class ='panel-heading'>",
             "<h3>",
             article.headline,

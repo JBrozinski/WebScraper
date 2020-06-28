@@ -35,13 +35,4 @@ mongoose.connect(db, function (error) {
     }
 });
 
-// app.use(express.json());
-
-// mongoose.Promise = Promise
-// mongoose.connect(MONGODB_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false,
-// });
 
