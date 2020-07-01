@@ -3,12 +3,12 @@ var cheerio = require("cheerio");
 
 var scrape = function (cb) {
 
-    request("https://coinrivet.com/category/bitcoin-news/", function (err, res, body) {
+    request("https://bitcoinmagazine.com/", function (err, res, body) {
         var $ = cheerio.load(body);
         var articles = [];
-        $(".t").each(function (i, element) {
-            var head = $(this).children().text();
-            var sum = $(this).children().attr("href");
+        $(".post").each(function (i, element) {
+            var head = $(this).children(".post-title").text();
+            var sum = $(this).children(".post-excerpt").text();
 
             if (head && sum) {
                 var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
